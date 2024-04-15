@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use('*',cors());
 
 
-app.use('/api/create', require('./routes/checkUser'))
+app.use('/api/user', require('./routes/checkUser'))
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
