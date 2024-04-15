@@ -5,28 +5,8 @@ const jwt = require("jsonwebtoken");
 const router = express.Router()
 
 
-// SignUp API Is Here
-router.post('/signup', async (req, res) => {
-    try {
-        let { name, email, password } = await req.body
-
-        // Encrypt
-        const cipherPassword = CryptoJS.AES.encrypt(JSON.stringify(password), '#@chaudhary@#').toString();
-
-        // JWT Token
-        const token = jwt.sign({ email }, "#@chaudhary@#");
-
-        let items = new User({ name, email, password: cipherPassword });
-        items.save()
-        res.send({ success: true, message: "Successfully Created An Account", token: token })
-    } catch (error) {
-        res.send({success: false, error: `Failed To Create: ${error}` })
-    }
-})
-
-
 // Login API Is Here
-router.post('/login', async (req, res) => {
+router.post('/isUser', async (req, res) => {
     let { email, password } = await req.body;
     let user = await User.findOne({ email });
 

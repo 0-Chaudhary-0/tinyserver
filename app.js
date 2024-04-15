@@ -5,14 +5,14 @@ const bodyParser = require("body-parser");
 const port = 3000;
 const app = express()
 
-// create application/json parser
-app.use(bodyParser.json());
-app.use(cors())
-
 connectDb()
 
-app.use('/api/auth', require('./routes/auth'))
-app.use('/api/student', require('./routes/enroll'))
+// create application/json parser
+app.use(bodyParser.json());
+app.use('*',cors());
+
+
+app.use('/api/create', require('./routes/checkUser'))
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
